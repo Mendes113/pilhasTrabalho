@@ -45,6 +45,8 @@ public class App {
 
         System.out.println(pilhaVet.palindromo(pilhaVet.top().toString()));
         
-
+        p2.inverteOrdem();
+        System.out.println("elementos da lista do topo para o fim");
+        p2.printAlunos();
     }
 }

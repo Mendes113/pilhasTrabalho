@@ -105,4 +105,16 @@ public class PilhaLista implements IPilhas {
         }
         return true;
     }
+
+
+    public boolean inverteOrdem() {
+        PilhaLista p = new PilhaLista();
+        Noh aux = topo;
+        while (aux != null) {
+            p.Push(aux.getInfo());
+            aux = aux.getProx();
+        }
+        topo = p.topo;
+        return true;
+    }
 }
