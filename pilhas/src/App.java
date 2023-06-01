@@ -1,8 +1,8 @@
 public class App {
     public static void main(String[] args) throws Exception {
         PilhaLista p = new PilhaLista();
-        System.out.println("tamanho da lista " + p.size());
-        System.out.println("Está vazio? " + p.isEmpty());
+        System.out.println("tamanho da lista " + p.size()); // mostra o tamanho da lista
+        System.out.println("Está vazio? " + p.isEmpty()); //verifica se a lista está vazia
         p.Push(1);
         p.Push(2);
         p.Push(3);
@@ -11,12 +11,13 @@ public class App {
         
         p.Pop();
         System.out.println("topo da lita depois de remover " + p.top());
-        System.out.println("tamanho da lista " + p.size());
+        System.out.println("tamanho da lista " + p.size()); // mostra o tamanho da lista
+        System.out.println("Está vazio? " + p.isEmpty()); //verifica se a lista está vazia
         System.out.println("elementos da lista do topo para o fim");
-        p.print();
+        p.print(); // mostra os elementos da lista do topo para o fim
         String palavra = "arara";
-        System.out.println( p.palindromo(palavra));
-        String palavra2 = "0110";
+        System.out.println( p.palindromo(palavra)); // parte do codigo para palindromo em lse
+        String palavra2 = "orava o avaro";
         System.out.println( p.palindromo(palavra2));
         String palavra3 = "radar";
         System.out.println( p.palindromo(palavra3));
@@ -38,15 +39,18 @@ public class App {
         p2.printAluno();                                // Imprime o nome do aluno no topo da pilha
         System.out.println("tamanho da lista " + p2.size()); 
         System.out.println("elementos da lista do topo para o fim");
-        p2.printAlunos();
+        p2.printAlunos(); // imprime a pilha, atributos do objeto, nome, matricula e nota
+        // poderia ter sido feito junto do método print mas foi separado para melhor entendimento
 
         PilhaVet pilhaVet = new PilhaVet(10);
         pilhaVet.Push("arara");
 
-        System.out.println(pilhaVet.palindromo(pilhaVet.top().toString()));
-        
-        p2.inverteOrdem();
-        System.out.println("elementos da lista do topo para o fim");
-        p2.printAlunos();
+        System.out.println(pilhaVet.palindromo(pilhaVet.top().toString())); // parte do codigo para palindromo em vetor 
+        pilhaVet.Push("orava o avaro");
+        System.out.println(pilhaVet.palindromo(pilhaVet.top().toString()));  // usa pilhaVet.top().toString() para converter o tipo Object para String
+        //precisa converter o tipo Object para String pq palindromo recebe uma String como parametro
+        p2.inverteOrdem(); // inverte a ordem dos elementos da pilha
+        System.out.println("elementos da lista do topo para o fim"); 
+        p2.printAlunos(); // imprime a pilha invertida, atributos do objeto, nome, matricula e nota
     }
 }
