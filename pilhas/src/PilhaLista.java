@@ -1,8 +1,13 @@
+import java.util.Map;
+import java.util.HashMap;
+
 public class PilhaLista implements IPilhas {
-    private Noh topo; // referência ao topo da pilha
-    
-    public PilhaLista() { // construtor
+    private Noh topo;
+    private Map<Integer, Aluno> mapa;
+
+    public PilhaLista() {
         this.topo = null;
+        this.mapa = new HashMap<>();
     }
 
     @Override
@@ -14,20 +19,24 @@ public class PilhaLista implements IPilhas {
             novo.setProx(topo);
             topo = novo;
         }
+        
+        if (info instanceof Aluno) {
+            Aluno aluno = (Aluno) info;
+            mapa.put(aluno.getMatricula(), aluno);
+        }
+        
         return true;
     }
-
-    
 
     @Override
     public Object Pop() {
         Object info = null;
-        if (!this.isEmpty()){
-        info = topo.getInfo();
-        topo = topo.getProx();
+        if (!this.isEmpty()) {
+            info = topo.getInfo();
+            topo = topo.getProx();
+            mapa.remove(info); // Remove a chave-valor do mapa
         }
         return info;
-
     }
 
     @Override
@@ -117,4 +126,24 @@ public class PilhaLista implements IPilhas {
         topo = p.topo;
         return true;
     }
+
+
+
+
+    public Map<Integer,Aluno> getMapa() {
+        return mapa;
+    }
+
+    public Aluno encontrarAlunoPorMatricula(int matricula) {
+        return mapa.get(matricula);
+    }
+
+
+    public void printaMapa() {
+        for (Map.Entry<Integer, Aluno> entry : mapa.entrySet()) {
+            System.out.println("Matricula: " + entry.getKey() + " Aluno: " + entry.getValue().getNome());
+        }
+    }
+
+
 }
