@@ -141,7 +141,8 @@ public class PilhaLista implements IPilhas {
 
     public void printaMapa() {
         for (Map.Entry<Integer, Aluno> entry : mapa.entrySet()) {
-            System.out.println("Matricula: " + entry.getKey() + " Aluno: " + entry.getValue().getNome());
+            System.out.println("Matricula: " + entry.getKey() + " Aluno: " + entry.getValue().getNome() + " Nota: " + entry.getValue().getNota()+ "Hash: " + entry.getValue().hashCode()) ;
+
         }
     }
 
