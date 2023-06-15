@@ -1,52 +1,56 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class App {
     public static void main(String[] args) throws Exception {
+        PilhaLista p = new PilhaLista();
+        System.out.println("tamanho da lista " + p.size()); // mostra o tamanho da lista
+        System.out.println("Está vazio? " + p.isEmpty()); //verifica se a lista está vazia
+        p.Push(1);
+        p.Push(2);
+        p.Push(3);
+
+        System.out.println("topo da lista " + p.top());
         
-        // Instanciando um objeto PilhaLista
-        PilhaLista pilha = new PilhaLista();
-        
-
-        // Instanciando um objeto Aluno e adicionando ao mapa
-        Aluno aluno1 = new Aluno("João", 123456, 9.5, pilha.getMapa());
-        Aluno aluno2 = new Aluno("Maria", 654321, 8.5, pilha.getMapa());
-        Aluno aluno3 = new Aluno("José", 456789, 7.5, pilha.getMapa());
-        Aluno aluno4 = new Aluno("Ana", 987654, 6.5, pilha.getMapa());
-        Aluno aluno5 = new Aluno("Pedro", 321654, 5.5, pilha.getMapa());
-        pilha.Push(aluno1);
-        pilha.Push(aluno2);
-        pilha.Push(aluno3);
-        pilha.Push(aluno4);
-        pilha.Push(aluno5);
-        
-
-
-        pilha.printAlunos();
-        System.out.println("Tamanho da pilha: " + pilha.size());
-         //busca aluno pela matricula
-
-                        int hash = aluno1.hashCode();
-                System.out.println("Hash do aluno: " + hash);   
-        
-
-        // Acessando informações do aluno
-       
-                    int matriculaDesejada = 123456;
-            Aluno alunoEncontrado = pilha.encontrarAlunoPorMatricula(matriculaDesejada);
-            if (alunoEncontrado != null) {
-                System.out.println("Aluno encontrado: " + alunoEncontrado.getNome());
-            } else {
-                System.out.println("Aluno não encontrado");
-}
+        p.Pop();
+        System.out.println("topo da lita depois de remover " + p.top());
+        System.out.println("tamanho da lista " + p.size()); // mostra o tamanho da lista
+        System.out.println("Está vazio? " + p.isEmpty()); //verifica se a lista está vazia
+        System.out.println("elementos da lista do topo para o fim");
+        p.print(); // mostra os elementos da lista do topo para o fim
+        String palavra = "arara";
+        System.out.println( p.palindromo(palavra)); // parte do codigo para palindromo em lse
+        String palavra2 = "orava o avaro";
+        System.out.println( p.palindromo(palavra2));
+        String palavra3 = "radar";
+        System.out.println( p.palindromo(palavra3));
 
 
 
+        Aluno a1 = new Aluno("João", 123, 9.5);
+        Aluno a2 = new Aluno("Maria", 456, 8.5);
+        Aluno a3 = new Aluno("José", 789, 7.5);
 
-        pilha.printaMapa();
+        PilhaLista p2 = new PilhaLista();
+        p2.Push(a1);
+        p2.Push(a2);
+        p2.Push(a3);
+        System.out.println("topo da lista " + p2.top());
+        p2.Pop();
+        System.out.println("topo da lista " + p2.top()); // Imprime  aluno no topo da pilha Errado pois o
+                                                          // método top retorna um Object
+        p2.printAluno();                                // Imprime o nome do aluno no topo da pilha
+        System.out.println("tamanho da lista " + p2.size()); 
+        System.out.println("elementos da lista do topo para o fim");
+        p2.printAlunos(); // imprime a pilha, atributos do objeto, nome, matricula e nota
+        // poderia ter sido feito junto do método print mas foi separado para melhor entendimento
 
+        PilhaVet pilhaVet = new PilhaVet(10);
+        pilhaVet.Push("arara");
+
+        System.out.println(pilhaVet.palindromo(pilhaVet.top().toString())); // parte do codigo para palindromo em vetor 
+        pilhaVet.Push("orava o avaro");
+        System.out.println(pilhaVet.palindromo(pilhaVet.top().toString()));  // usa pilhaVet.top().toString() para converter o tipo Object para String
+        //precisa converter o tipo Object para String pq palindromo recebe uma String como parametro
+        p2.inverteOrdem(); // inverte a ordem dos elementos da pilha
+        System.out.println("elementos da lista do topo para o fim"); 
+        p2.printAlunos(); // imprime a pilha invertida, atributos do objeto, nome, matricula e nota
     }
-
-
-    
 }
